@@ -8,7 +8,7 @@
 CREATE TABLE Kund(
   kundNr        int           NOT NULL  AUTO_INCREMENT,
   förnamn       varChar(50)   NOT NULL,
-  efterNamn     varChar(50)   NOT NULL,
+  efternamn     varChar(50)   NOT NULL,
   körkort       bit           NOT NULL,
   ålder         date          NOT NULL,
   anmärkningar  varChar(500),
