@@ -1,0 +1,83 @@
+INSERT INTO Kund 
+(förnamn,   efternamn,      körkort,  ålder,          anmärkningar,       företagsNamn,     orgNr) VALUES 
+('Jabok',   'Pettersson',   0,        '1995-05-05',   'Spöat chefen',     'Shell',          1231231),
+('Greta',   'Jaboksson',    1,        '1990-01-01',    NULL,              NULL,             NULL),
+('Pekka',   'Rinne',        1,        '1982-10-26',    NULL,              NULL,             NULL),
+('Annika',  'Sjöström',     1,        '1994-04-04',   'Trevlig gumma',    'Elgiganten',     612524),
+('Bertil',  'Bertilsson',   1,        '1960-09-05',    NULL,              NULL,             NULL);
+
+
+INSERT INTO Station (ort) VALUES
+('Haparanda'),
+('Luleå'),
+('Boden'),
+('Skellefteå'),
+('Stockholm');
+
+
+INSERT INTO FordonTyp 
+(antalDörrar, lastUtrymme,  bilMärke,       färg,       typBeskrivning) VALUES
+(4,           500,          'Saab',         'Röd',      'Personbil'),
+(4,           500,          'Volvo',        'Svart',    'Personbil'),
+(2,           2000,         'Mercedes',     'Vit',      'Skåpbil'),
+(4,           500,          'Volvo',        'Svart',    'Personbil'),
+(2,           350,          'Volvo',        'Svart',    'Personbil'),
+(2,           1500,         'Mercedes',     'Vit',      'Skåpbil'),
+(4,           500,          'Audi',         'Svart',    'Personbil'),
+(4,           500,          'Saab',         'Svart',    'Personbil'),
+(2,           1750,         'Mercedes',     'Svart',    'Skåpbil');
+
+
+INSERT INTO Fordon 
+(chassiNr,                  stationNr,    fordonTypNr,    regNr,        aktivitet) VALUES
+('JKU 34Y3K 554 A4K9II',    1,            3,              'ASD-333',    'Ja'),
+('Q4B 3H68K LO0 0JD32R',    3,            2,              'DED-123',    'Ja'),
+('9MD PMN87 909 MAJ86D',    NULL,         1,              'GGG-415',    'Nej'),
+('K9L 123F6 23M PO3EV6',    1,            4,              'XSX-757',    'Nej'),
+('AKL 333GG MK6 0LK123',    4,            5,              'BBD-142',    'Ja'),
+('KPL 4352V S6F SU93GG',    2,            2,              'HKH-132',    'Ja'),
+('7OP 9KMN3 LWE 543FGH',    NULL,         9,              'BBB-412',    'Nej');
+
+
+INSERT INTO Personal 
+(stationNr, förnamn,    efternamn,      anställningsDatum,  telNr,          ort,            postNr,     adress,                 yrkesområde) VALUES
+(1,         'Jouko',    'Kyllönen',     '2000-12-12',       '0701234567',   'Kiruna',       '33300',    'Bollgatan 3',          'Stationchef'),
+(NULL,      'Sara',     'Pattersson',   '2010-06-07',       '0707654321',   'Skellefteå',   '72888',    'Korianderstigen 2',    'HR-Chef'),
+(NULL,      'Pekka',    'Rinne',        '1999-06-06',       '0729876421',   'Boden',        '12345',    'Stigstigen 69',        'Säljare'),
+(NULL,      'Pekka',    'Rinne',        '2005-11-09',       '0769988772',   'Göteborg',     '54321',    'Gatugatan 33',         'Säljare'),
+(NULL,      'Bo',       'Larsson',      '2006-03-07',       '0742314124',   'Luleå',        '69693',    'Ekorrvägen 9',         'Ekonomichef'),
+(3,         'Pekka',    'Rinne',        '2003-08-11',       '0737870234',   'Umeå',         '77722',    'Hästgatan  1A',        'Mekaniker'),
+(NULL,      'Pekka',    'Rinne',        '1999-04-15',       '0729190876',   'Luleå',        '33445',    'Elefantstigen 45',     'Säljare'),
+(NULL,      'Pekka',    'Rinne',        '2003-05-04',       '0708504210',   'Jokkmokk',     '55223',    'Hundvägen 12',         'VD'),
+(4,         'Håkan',    'Bollström',    '2003-02-03',       '0799081234',   'Stockholm',    '45678',    'Strutsgatan 43',       'Statigubbe');
+
+
+INSERT INTO KontrollTillfälle 
+(chassiNr,                  anställningsNr,   datum,                    mätarställning,   status) VALUES
+('JKU 34Y3K 554 A4K9II',    2,                '2022-01-01 13:30:11',    180001,           'Medioker'),
+('Q4B 3H68K LO0 0JD32R',    4,                '2020-12-15 14:33:14',    220004,           'Risig'),
+('9MD PMN87 909 MAJ86D',    7,                '2019-01-01 10:05:30',    2034,             'Fantastisk'),
+('K9L 123F6 23M PO3EV6',    8,                '2018-06-02 10:33:44',    147893,           'Tveksam'),
+('AKL 333GG MK6 0LK123',    8,                '2019-05-24 23:59:59',    70005,            'Tveksam'),
+('KPL 4352V S6F SU93GG',    1,                '2021-03-03 12:58:33',    194566,           'Tveksam'),
+('7OP 9KMN3 LWE 543FGH',    5,                '2017-01-03 17:44:18',    245893,           'Lagom');
+
+
+
+INSERT INTO Avtal 
+(kundNr,  anställningsNr,   avtalsTyp,        prisBetalt,     bokningsDatum) VALUES
+(3,       3,                'Privatkund',     3400,           '2022-04-01 12:00:03'),
+(2,       4,                'Privatkund',     4263,           '2020-06-25 14:03:12'),
+(4,       7,                'Företagskund',   300,            '2019-06-01 03:03:09'),
+(5,       3,                'Privatkund',     303,            '2018-03-15 05:06:12');
+
+
+INSERT INTO AvtalFordon 
+(avtalsNr,    chassiNr,                 startDatum,       slutDatum,        pris) VALUES
+(1,           'JKU 34Y3K 554 A4K9II',   '2022-04-15',     '2022-06-14',     3000),
+(1,           'Q4B 3H68K LO0 0JD32R',   '2021-04-16',     '2021-06-16',     400),
+(3,           '9MD PMN87 909 MAJ86D',   '2019-06-21',     '2019-08-17',     300),
+(2,           'K9L 123F6 23M PO3EV6',   '2020-07-03',     '2020-08-14',     851),
+(2,           'AKL 333GG MK6 0LK123',   '2020-07-14',     '2020-09-14',     3000),
+(2,           'KPL 4352V S6F SU93GG',   '2020-07-22',     '2020-08-22',     412),
+(4,           '7OP 9KMN3 LWE 543FGH',   '2018-03-16',     '2018-04-14',     303);

@@ -5,6 +5,11 @@
   3. Now you can apply the SQL below to create the tables.
 */
 
+*/
+  CREATE DATABASE dbuppg2;
+  USE dbuppg2;
+*/
+
 CREATE TABLE Kund(
   kundNr        int           NOT NULL  AUTO_INCREMENT,
   förnamn       varChar(50)   NOT NULL,
@@ -12,7 +17,7 @@ CREATE TABLE Kund(
   körkort       bit           NOT NULL,
   ålder         date          NOT NULL,
   anmärkningar  varChar(500),
-  foretagsNamn  varChar(50),
+  företagsNamn  varChar(50),
   orgNr         int,
 
   CONSTRAINT PK_Kund PRIMARY KEY (kundNr)
@@ -126,7 +131,7 @@ CREATE TABLE KontrollTillfälle(
   chassiNr        varChar(50),
   anställningsNr  int,
   datum           datetime      NOT NULL,
-  mätärställning  mediumint     NOT NULL,
+  mätarställning  mediumint     NOT NULL,
   status          varChar(30)   NOT NULL,
 
   CONSTRAINT PK_KontrollTillfälle 
