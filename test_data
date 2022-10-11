@@ -43,13 +43,13 @@ INSERT INTO Personal
 (stationNr, förnamn,    efternamn,      anställningsDatum,  telNr,          ort,            postNr,     adress,                 yrkesområde) VALUES
 (1,         'Jouko',    'Kyllönen',     '2000-12-12',       '0701234567',   'Kiruna',       '33300',    'Bollgatan 3',          'Stationchef'),
 (NULL,      'Sara',     'Pattersson',   '2010-06-07',       '0707654321',   'Skellefteå',   '72888',    'Korianderstigen 2',    'HR-Chef'),
-(NULL,      'Pekka',    'Rinne',        '1999-06-06',       '0729876421',   'Boden',        '12345',    'Stigstigen 69',        'Säljare'),
-(NULL,      'Pekka',    'Rinne',        '2005-11-09',       '0769988772',   'Göteborg',     '54321',    'Gatugatan 33',         'Säljare'),
+(NULL,      'Markus',   'Grandlund',    '1999-06-06',       '0729876421',   'Boden',        '12345',    'Stigstigen 69',        'Säljare'),
+(NULL,      'Steven',   'Seagal',       '2005-11-09',       '0769988772',   'Göteborg',     '54321',    'Gatugatan 33',         'Säljare'),
 (NULL,      'Bo',       'Larsson',      '2006-03-07',       '0742314124',   'Luleå',        '69693',    'Ekorrvägen 9',         'Ekonomichef'),
-(3,         'Pekka',    'Rinne',        '2003-08-11',       '0737870234',   'Umeå',         '77722',    'Hästgatan  1A',        'Mekaniker'),
-(NULL,      'Pekka',    'Rinne',        '1999-04-15',       '0729190876',   'Luleå',        '33445',    'Elefantstigen 45',     'Säljare'),
-(NULL,      'Pekka',    'Rinne',        '2003-05-04',       '0708504210',   'Jokkmokk',     '55223',    'Hundvägen 12',         'VD'),
-(4,         'Håkan',    'Bollström',    '2003-02-03',       '0799081234',   'Stockholm',    '45678',    'Strutsgatan 43',       'Statigubbe');
+(3,         'Sydney',   'Crosby',       '2003-08-11',       '0737870234',   'Umeå',         '77722',    'Hästgatan  1A',        'Mekaniker'),
+(NULL,      'Teemu',    'Selänne',      '1999-04-15',       '0729190876',   'Luleå',        '33445',    'Elefantstigen 45',     'Säljare'),
+(NULL,      'Patrick',  'Kane',         '2003-05-04',       '0708504210',   'Jokkmokk',     '55223',    'Hundvägen 12',         'VD'),
+(4,         'Håkan',    'Bollström',    '2003-02-03',       '0799081234',   'Stockholm',    '45678',    'Strutsgatan 43',       'Stationgubbe');
 
 
 INSERT INTO KontrollTillfälle 
