@@ -5,7 +5,7 @@
   3. Now you can apply the SQL below to create the tables.
 */
 
-*/
+/*
   CREATE DATABASE dbuppg2;
   USE dbuppg2;
 */
@@ -70,8 +70,8 @@ CREATE TABLE Personal(
 
 CREATE TABLE Avtal(
   avtalsNr        int           NOT NULL  AUTO_INCREMENT,
-  kundNr          int,
-  anställningsNr  int,
+  kundNr          int           NOT NULL,
+  anställningsNr  int           NOT NULL,
   avtalsTyp       varChar(900)  NOT NULL,
   prisBetalt      int           NOT NULL,
   bokningsDatum   datetime      NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE FordonTyp(
 CREATE TABLE Fordon(
   chassiNr    varChar(50) NOT NULL,
   stationNr   int,
-  fordonTypNr int,
+  fordonTypNr int         NOT NULL,
   regNr       varChar(7)  NOT NULL,
   aktivitet   varChar(30) NOT NULL,
 
@@ -128,8 +128,8 @@ CREATE TABLE Fordon(
 
 CREATE TABLE KontrollTillfälle(
   kontrollNr      int           NOT NULL  AUTO_INCREMENT,
-  chassiNr        varChar(50),
-  anställningsNr  int,
+  chassiNr        varChar(50)   NOT NULL,
+  anställningsNr  int           NOT NULL,
   datum           datetime      NOT NULL,
   mätarställning  mediumint     NOT NULL,
   status          varChar(30)   NOT NULL,
@@ -150,12 +150,12 @@ CREATE TABLE KontrollTillfälle(
 
 
 CREATE TABLE AvtalFordon(
-  avtalFordonNr int         NOT NULL  AUTO_INCREMENT,
-  avtalsNr      int,
-  chassiNr      varChar(50),
-  startDatum    datetime    NOT NULL,
-  slutDatum     datetime    NOT NULL,
-  pris          int         NOT NULL,
+  avtalFordonNr int           NOT NULL  AUTO_INCREMENT,
+  avtalsNr      int           NOT NULL,
+  chassiNr      varChar(50)   NOT NULL,
+  startDatum    datetime      NOT NULL,
+  slutDatum     datetime      NOT NULL,
+  pris          int           NOT NULL,
 
   CONSTRAINT PK_AvtalFordon
   PRIMARY KEY (avtalFordonNr),
