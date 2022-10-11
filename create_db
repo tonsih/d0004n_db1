@@ -1,0 +1,165 @@
+/*
+  In order to create a database and apply the changes.
+  1. First create database: CREATE DATABASE YOUR_DB_NAME
+  2. Use the database: USE YOUR_DB_NAME
+  3. Now you can apply the SQL below to create the tables.
+*/
+
+CREATE TABLE Kund(
+  kundNr        int           NOT NULL  AUTO_INCREMENT,
+  förnamn       varChar(50)   NOT NULL,
+  efterNamn     varChar(50)   NOT NULL,
+  körkort       bit           NOT NULL,
+  ålder         date          NOT NULL,
+  anmärkningar  varChar(500),
+  foretagsNamn  varChar(50),
+  orgNr         int,
+
+  CONSTRAINT PK_Kund PRIMARY KEY (kundNr)
+);
+
+/* COMMENTED OUT - SAVED IT HERE FOR LULZ
+CREATE TABLE FöretagsKund(
+  kundNr        int,
+  orgNr         int         NOT NULL,
+  företagsNamn  varChar(50) NOT NULL,
+  
+  CONSTRAINT FK_FöretagsKund 
+  FOREIGN KEY (kundNr) REFERENCES Kund(kundNr)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
+*/
+
+
+CREATE TABLE Station(
+  stationNr       int         NOT NULL  AUTO_INCREMENT,
+  ort             varChar(15) NOT NULL,
+  
+  CONSTRAINT PK_Station 
+  PRIMARY KEY (stationNr)
+);
+
+
+CREATE TABLE Personal(
+  anställningsNr    int           NOT NULL  AUTO_INCREMENT,
+  stationNr         int,           
+  förnamn           varChar(50)   NOT NULL,
+  efternamn         varChar(50)   NOT NULL,
+  anställningsDatum date          NOT NULL,
+  telNr             varChar(15)   NOT NULL,
+  ort               varChar(15)   NOT NULL,
+  postNr            varChar(5)    NOT NULL,
+  adress            varChar(50)   NOT NULL,
+  yrkesområde       varChar(15),
+  
+  CONSTRAINT PK_Personal 
+  PRIMARY KEY (anställningsNr),
+
+  CONSTRAINT FK_StationPersonal 
+  FOREIGN KEY (stationNr) REFERENCES Station(stationNr)
+  ON DELETE SET NULL
+  ON UPDATE CASCADE
+);
+
+
+CREATE TABLE Avtal(
+  avtalsNr        int           NOT NULL  AUTO_INCREMENT,
+  kundNr          int,
+  anställningsNr  int,
+  avtalsTyp       varChar(900)  NOT NULL,
+  prisBetalt      int           NOT NULL,
+  bokningsDatum   datetime      NOT NULL,
+  
+  CONSTRAINT PK_Avtal 
+  PRIMARY KEY (avtalsNr),
+  
+  CONSTRAINT FK_KundAvtal 
+  FOREIGN KEY (kundNr) REFERENCES Kund(kundnr)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE,
+  
+  CONSTRAINT FK_PersonalAvtal 
+  FOREIGN KEY (anställningsNr) REFERENCES Personal(anställningsNr)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE
+);
+
+
+CREATE TABLE FordonTyp(
+  fordonTypNr     int         NOT NULL  AUTO_INCREMENT,
+  antalDörrar     tinyint     NOT NULL,
+  lastUtrymme     mediumint   NOT NULL,
+  bilMärke        varChar(20) NOT NULL,
+  färg            varChar(20) NOT NULL,
+  typBeskrivning  varChar(20),
+
+  CONSTRAINT PK_FordonTyp 
+  PRIMARY KEY (fordonTypNr)
+);
+
+
+CREATE TABLE Fordon(
+  chassiNr    varChar(50) NOT NULL,
+  stationNr   int,
+  fordonTypNr int,
+  regNr       varChar(7)  NOT NULL,
+  aktivitet   varChar(30) NOT NULL,
+
+  CONSTRAINT PK_Fordon 
+  PRIMARY KEY (chassiNr),
+  
+  CONSTRAINT FK_StationFordon
+  FOREIGN KEY (stationNr) REFERENCES Station(stationNr)
+  ON DELETE SET NULL
+  ON UPDATE CASCADE,
+  
+  CONSTRAINT FK_FordonTypFordon
+  FOREIGN KEY (fordonTypNr) REFERENCES FordonTyp(fordonTypNr)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE
+);
+
+
+CREATE TABLE KontrollTillfälle(
+  kontrollNr      int           NOT NULL  AUTO_INCREMENT,
+  chassiNr        varChar(50),
+  anställningsNr  int,
+  datum           datetime      NOT NULL,
+  mätärställning  mediumint     NOT NULL,
+  status          varChar(30)   NOT NULL,
+
+  CONSTRAINT PK_KontrollTillfälle 
+  PRIMARY KEY (kontrollNr),
+  
+  CONSTRAINT FK_FordonKontrollTillfälle
+  FOREIGN KEY (chassiNr) REFERENCES Fordon(chassiNr)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE,
+  
+  CONSTRAINT FK_PersonalKontrolTillfälle
+  FOREIGN KEY (anställningsNr) REFERENCES Personal(anställningsNr)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE
+);
+
+
+CREATE TABLE AvtalFordon(
+  avtalFordonNr int         NOT NULL  AUTO_INCREMENT,
+  avtalsNr      int,
+  chassiNr      varChar(50),
+  startDatum    datetime    NOT NULL,
+  slutDatum     datetime    NOT NULL,
+  pris          int         NOT NULL,
+
+  CONSTRAINT PK_AvtalFordon
+  PRIMARY KEY (avtalFordonNr),
+
+  CONSTRAINT FK_AvtalAvtalFordon
+  FOREIGN KEY (avtalsNr) REFERENCES Avtal(avtalsNr)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE,
+  
+  CONSTRAINT FK_FordonAvtalFordon
+  FOREIGN KEY (chassiNr) REFERENCES Fordon(chassiNr)
+);
